@@ -1,6 +1,6 @@
 package com.kanionland.game.session.application.ports.output.jms;
 
-import com.kanionland.game.domain.model.GameSession;
+import com.kanionland.game.session.domain.model.GameSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;

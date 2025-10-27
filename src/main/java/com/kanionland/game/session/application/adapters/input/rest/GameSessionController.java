@@ -14,30 +14,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/game-sessions")
+@RequestMapping("/game-sessions")
 @RequiredArgsConstructor
 public class GameSessionController {
 
-    private final GameSessionService gameSessionService;
+  private final GameSessionService gameSessionService;
 
-    @PostMapping
-    public ResponseEntity<GameSession> startSession(@RequestParam String playerId) {
-        GameSession session = gameSessionService.startSession(playerId);
-        return ResponseEntity
-                .created(URI.create("/api/game-sessions/" + session.getId()))
-                .body(session);
-    }
+  @PostMapping
+  public ResponseEntity<Void> startSession(@RequestParam String playerId) {
+    gameSessionService.startSession(playerId);
+    return ResponseEntity.ok().build();
+  }
 
-    @PostMapping("/{sessionId}/end")
-    public ResponseEntity<GameSession> endSession(@PathVariable UUID sessionId) {
-        GameSession session = gameSessionService.endSession(sessionId);
-        return ResponseEntity.ok(session);
-    }
-
-    @GetMapping("/{sessionId}")
-    public ResponseEntity<GameSession> getSession(@PathVariable UUID sessionId) {
-        return gameSessionService.getSession(sessionId)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+  @PostMapping("/{sessionId}/end")
+  public ResponseEntity<Void> endSession(@PathVariable UUID sessionId) {
+    gameSessionService.endSession(sessionId);
+    return ResponseEntity.ok().build();
+  }
 }

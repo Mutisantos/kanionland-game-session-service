@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface GameSessionService {
-    GameSession startSession(String playerId);
-    GameSession endSession(UUID sessionId);
-    Optional<GameSession> getSession(UUID sessionId);
+    void startSession(String playerId);
+    void endSession(UUID sessionId);
 }

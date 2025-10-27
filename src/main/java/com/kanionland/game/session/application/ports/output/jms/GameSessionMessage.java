@@ -1,7 +1,7 @@
 package com.kanionland.game.session.application.ports.output.jms;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kanionland.game.domain.model.GameState;
+import com.kanionland.game.session.domain.model.GameState;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
