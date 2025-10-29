@@ -1,0 +1,42 @@
+name: Maven CI - Test, Verify and Coverage
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+      - name: Build and test with Maven
+        run: |
+          mvn clean verify jacoco:report -Dmaven.test.failure.ignore=true
+      - name: Check code coverage
+        run: |
+          mvn jacoco:check@check-coverage
+        continue-on-error: false
+      - name: Cache SonarQube packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: SonarQube Scan
+        uses: SonarSource/sonarcloud-github-action@v2.2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
