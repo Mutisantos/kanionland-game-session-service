@@ -1,4 +1,4 @@
-package com.kanionland.game.session.application.ports.output.jms;
+package com.kanionland.game.session.infrastructure.producers.jms;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kanionland.game.session.domain.model.GameState;

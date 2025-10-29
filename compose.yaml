@@ -2,11 +2,12 @@ services:
   activemq:
     image: 'apache/activemq-classic:latest'
     ports:
-      - '61616'
+      - '65130:61616'
+      - '8161:8161'
   rabbitmq:
     image: 'rabbitmq:latest'
     environment:
       - 'RABBITMQ_DEFAULT_PASS=secret'
       - 'RABBITMQ_DEFAULT_USER=myuser'
     ports:
-      - '5672'
+      - '5673:5672'

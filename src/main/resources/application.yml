@@ -6,7 +6,7 @@ jwt:
 
 spring:
   activemq:
-    broker-url: tcp://localhost:61616
+    broker-url: tcp://localhost:65130
     user: admin
     password: admin
     packages:
@@ -15,6 +15,8 @@ spring:
       enabled: true
       max-connections: 10
       idle-timeout: 30000
+    queue:
+      game-session: game-session-queue
 
 jms:
   queue:
