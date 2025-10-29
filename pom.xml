@@ -321,6 +321,7 @@
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
     <sonar.java.libraries>${project.build.directory}/**/*.jar</sonar.java.libraries>
     <sonar.language>java</sonar.language>
+    <sonar.organization>mutisantos</sonar.organization>
     <spring-cloud.version>2025.0.0</spring-cloud.version>
   </properties>
   <scm>
