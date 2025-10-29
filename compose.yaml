@@ -4,6 +4,17 @@ services:
     ports:
       - '65130:61616'
       - '8161:8161'
+    volumes:
+      - ./activemq/activemq.xml:/opt/activemq/conf/activemq.xml
+    environment:
+      - ACTIVEMQ_ADMIN=admin
+      - ACTIVEMQ_PASSWORD=admin
+      - ACTIVEMQ_QUEUES=game-session-queue
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8161" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   rabbitmq:
     image: 'rabbitmq:latest'
     environment:
