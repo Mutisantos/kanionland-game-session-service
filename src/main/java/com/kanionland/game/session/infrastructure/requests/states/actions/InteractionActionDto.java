@@ -1,5 +1,6 @@
 package com.kanionland.game.session.infrastructure.requests.states.actions;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class InteractionActionDto implements ActionDto {
   private int value;
 
   @Override
+  @JsonIgnore
   public String getType() {
     return "INTERACTION";
   }

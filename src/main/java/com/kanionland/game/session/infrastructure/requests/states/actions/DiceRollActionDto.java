@@ -1,5 +1,6 @@
 package com.kanionland.game.session.infrastructure.requests.states.actions;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +19,7 @@ public class DiceRollActionDto implements ActionDto {
   private List<Integer> fateRollValues;
 
   @Override
+  @JsonIgnore
   public String getType() {
     return "DICE_ROLL";
   }
