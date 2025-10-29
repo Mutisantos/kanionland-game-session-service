@@ -76,7 +76,6 @@ public class JmsConfig {
   @Bean
   public XmlMapper xmlMapper() {
     return XmlMapper.builder()
-        .defaultUseWrapper(false)
         .addModule(new JavaTimeModule())
         .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
         .build();

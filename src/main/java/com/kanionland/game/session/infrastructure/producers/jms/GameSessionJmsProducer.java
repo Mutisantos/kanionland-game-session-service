@@ -1,11 +1,12 @@
 package com.kanionland.game.session.infrastructure.producers.jms;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.kanionland.game.session.application.commands.GameActionCommand;
 import com.kanionland.game.session.domain.model.GameSession;
 import jakarta.jms.TextMessage;
 import java.time.LocalDateTime;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
@@ -14,11 +15,12 @@ import org.springframework.stereotype.Component;
 public class GameSessionJmsProducer {
 
   private final JmsTemplate jmsTemplate;
-  private final ObjectMapper xmlMapper;
+  @Qualifier("xmlMapper")
+  private final XmlMapper xmlMapper;
   private final String queueName;
 
   public GameSessionJmsProducer(JmsTemplate jmsTemplate,
-      ObjectMapper xmlMapper,
+      XmlMapper xmlMapper,
       @Value("${jms.queue.game-session}") String queueName) {
     this.jmsTemplate = jmsTemplate;
     this.queueName = queueName;

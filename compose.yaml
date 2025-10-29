@@ -1,9 +1,18 @@
+version: "3.9"
+
+networks:
+  kanionland-message-network:
+    driver: bridge
+    name: kanionland-message-network
+
 services:
   activemq:
     image: 'apache/activemq-classic:latest'
     ports:
       - '65130:61616'
       - '8161:8161'
+    networks:
+      - kanionland-message-network
     volumes:
       - ./activemq/activemq.xml:/opt/activemq/conf/activemq.xml
     environment:
@@ -22,3 +31,5 @@ services:
       - 'RABBITMQ_DEFAULT_USER=myuser'
     ports:
       - '5673:5672'
+    networks:
+      - kanionland-message-network
