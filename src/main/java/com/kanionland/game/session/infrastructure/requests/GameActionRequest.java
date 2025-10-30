@@ -1,5 +1,6 @@
 package com.kanionland.game.session.infrastructure.requests;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.kanionland.game.session.infrastructure.requests.states.actions.ActionDto;
@@ -19,6 +20,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GameActionRequest {
 
   @NotBlank
@@ -27,7 +29,7 @@ public class GameActionRequest {
   private String character;
 
   private String description;
-  
+
   @Valid
   @JsonTypeInfo(
       use = JsonTypeInfo.Id.NAME,
