@@ -20,6 +20,8 @@ public class DiceRollAction implements Action {
   private final int challengeValue;
   @JacksonXmlProperty(localName = "rollValue")
   private final int rollValue;
+  @JacksonXmlProperty(localName = "statValue")
+  private final int statValue;
   @JacksonXmlProperty(localName = "fateRollValues")
   private final List<Integer> fateRollValues;
 

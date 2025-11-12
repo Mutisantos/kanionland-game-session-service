@@ -16,6 +16,7 @@ public class DiceRollActionDto implements ActionDto {
   private String stat;
   private int challengeValue;
   private int rollValue;
+  private int statValue;
   private List<Integer> fateRollValues;
 
   @Override
